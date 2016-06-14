@@ -13,6 +13,6 @@
   },
   "dependencies": {
     "express": "~3.4.7",
-    "express-request-language": "^1.1.4"
+    "mongodb": "node_modules/mongodb"
   }
 }
