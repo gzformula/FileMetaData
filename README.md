@@ -1,4 +1,4 @@
-# FCC URL Shortener Microservice BaseJump- using Clementine.js FCC Boilerplate
+# FCC URL Shortener Microservice BaseJump
 
 ## Objective
 Build a full stack JavaScript app that is functionally similar to this: https://little-url.herokuapp.com/ and deploy it to Heroku.
