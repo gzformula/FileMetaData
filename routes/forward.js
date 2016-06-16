@@ -17,7 +17,6 @@ module.exports = function(app, db) {
                     console.log("Redirecting to ", docs[0].original);
                     response.redirect(docs[0].original);
                 }
-                
             });
         
     });
