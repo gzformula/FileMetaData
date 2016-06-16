@@ -18,7 +18,6 @@
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "method-override": "^2.3.6",
-    "mongodb": "node_modules/mongodb",
     "morgan": "^1.7.0",
     "multer": "^1.1.0",
     "pug": "^2.0.0-beta3",
