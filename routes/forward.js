@@ -9,11 +9,13 @@ module.exports = function(app, db) {
                 assert.equal(err, null);
                 // if not in the database respond with error
                 if (docs.length == 0) {
+                    console.log("No record found for ", shorturl);
                     response.status(404).json({ error: "short URL invalid"});
                 } 
                 // if it is in the database then respond with the result
                 else {
-                    response.redirect(docs[0].long_url);
+                    console.log("Redirecting to ", docs[0].original);
+                    response.redirect(docs[0].original);
                 }
                 
             });
