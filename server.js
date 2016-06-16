@@ -3,7 +3,7 @@
 var express = require('express');
 var mongo = require('mongodb').MongoClient;
 var app = express();
-var mongoUrl = process.env.MONGO_URI || 'mongodb://heroku_0fbfpzr8:Cruentis33@ds017582.mlab.com:17582/heroku_0fbfpzr8';
+var mongoUrl = process.env.MONGO_URI || 'mongodb://gzformula:Cruentis33@ds017582.mlab.com:17582/heroku_0fbfpzr8';
 var assert = require('assert');
 var port = process.env.PORT || 8080;
 
@@ -12,7 +12,7 @@ app.use(express.static('public'));
 // connect to the MongoDB database
 mongo.connect(mongoUrl, function(err, db) {
     assert.equal(null, err);
-    console.log("Successfully connected to MongoDB.");
+    console.log("Successfully connected to MongoDB: ", mongoUrl);
 
     // homepage
     app.get('/', function(req, res) {
