@@ -7,6 +7,7 @@ var parseUrlencoded = bodyParser.urlencoded({ extended: false });
 router.route('/')
 .post(parseUrlencoded, function(request, response){  
     var url = request.body.url;
+    console.log("Redirect post to:", url);
     response.redirect('/api/' + url);
 });
 
