@@ -14,29 +14,22 @@ module.exports = function(app, db) {
         if (typeof(searchString) == undefined) {
             response.status(404).json({ error: "invalid search request"});
         } else { 
-            client.search('Steve Angello')
+             if (typeof(pageNum) == undefined) {
+            client.search(searchString)
                 .then(function (images) {
-                    /*
-                    [{
-                        "url": "http://steveangello.com/boss.jpg",
-                        "type": "image/jpeg",
-                        "width": 1024,
-                        "height": 768,
-                        "size": 102451,
-                        "thumbnail": {
-                            "url": "http://steveangello.com/thumbnail.jpg",
-                            "width": 512,
-                            "height": 512
-                        }
-                    }]
-                     */
+                    response.json(images);
+                     
                 });
-                if (pageNum > 0) {
+             } else {
                     // paginate results
-                    client.search('Steve Angello', {
-                        page: 2
+                    client.search(searchString, {
+                        page: pageNum
+                    })
+                    .then(function(images) {
+                         response.json(images);
                     });
                 }
+
             // add search to the latest db docs
             db.collection('imagesearch').find({ "requested": searchString }).toArray(function(err, docs) {
                     assert.equal(err, null);
