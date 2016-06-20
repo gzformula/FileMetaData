@@ -14,11 +14,15 @@ module.exports = function(app, db) {
         if (typeof(searchString) == undefined) {
             response.status(404).json({ error: "invalid search request"});
         } else { 
+            // add the search request to the database 
+            console.log("Insert search to db");
+            db.collection('imagesearch').insert({ "requested": searchString });
+
+                
              if (typeof(pageNum) == undefined) {
             client.search(searchString)
                 .then(function (images) {
                     response.json(images);
-                     
                 });
              } else {
                     // paginate results
@@ -29,18 +33,16 @@ module.exports = function(app, db) {
                          response.json(images);
                     });
                 }
-
-            // add search to the latest db docs
-            db.collection('imagesearch').find({ "requested": searchString }).toArray(function(err, docs) {
-                    assert.equal(err, null);
-                    // if not add the url to the database with a short url
-                    if (docs.length == 0) {
-                            // add the search request to the database and respond
-                            db.collection('imagesearch').insert({ "requested": searchString });
-                    } 
-                });
         }
     });
+};
+
+var objectIdFromDate = function (date) {
+	return Math.floor(date.getTime() / 1000).toString(16) + "0000000000000000";
+};
+
+var dateFromObjectId = function (objectId) {
+	return new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
 };
 
 
