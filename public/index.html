@@ -1,38 +1,143 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>URL Shortener Microservice</title>
+        <title>Image Search Abstraction Layer</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     </head>
     <body>
         <div class="container">
             <h1 class="header">
-                API Basejump: URL Shortener Microservice
+                API Basejump: Image Search Abstraction Layer
             </h1>
             <blockquote>
                 User stories:
-                <ul>1) I can pass a URL as a parameter and I will receive a shortened URL in the JSON response.</ul>
-                <ul>2)When I visit that shortened URL, it will redirect me to my original link.</ul>
-
+                <ul>1) I can get the image URLs, alt text and page urls for a set of images relating to a given search string.</ul>
+                <ul>2) I can paginate through the responses by adding a ?offset=2 parameter to the URL.</ul>
+                <ul>3) I can get a list of the most recently submitted search strings.</ul>
+                
             </blockquote>
             <h3>Example usage:</h3>
-            <code>https://limitless-shore-63755.herokuapp.com/new/https://www.google.com</code><br>
-            <code>https://limitless-shore-63755.herokuapp.com/new/http://foo.com:80</code>
+            <h4>Image Search:</h4>
             
-            <h3>Example output:</h3>
             <code>
- 				{ "original_url":"http://foo.com:80", "short_url":"https://limitless-shore-63755.herokuapp.com/312" }
+            	https://imagesearch-gzformula.c9users.io/api/imagesearch/lolcats%20funny?offset=10
             </code>
             
-            <h3>Usage: </h3>
+            <h5>Will return page 10 of results: </h5>
             <code>
-            	https://limitless-shore-63755.herokuapp.com/2
+            	[
+                    {
+                    url: "https://i.ytimg.com/vi/8nOsEEBrEuA/hqdefault.jpg",
+                    snippet: "LOLCats in All Fired Up lol",
+                    thumbnail: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQuWNpmeNmLlMNc0v32tK83j4eOrOPVS6M2kty-CVFzQTvbS9d9WdKfrg7E",
+                    context: "https://www.youtube.com/watch?v=8nOsEEBrEuA"
+                    },
+                    {
+                    url: "http://data.whicdn.com/images/33269155/large.jpg",
+                    snippet: "Lolcats - Funny Pictures of",
+                    thumbnail: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQjWlGwqy4O4t247ol9hFdz_bZgWxy-AgzuwQUGgZyKwVZeXht_KaOjRTo",
+                    context: "http://weheartit.com/entry/group/7423856"
+                    },
+                    {
+                    url: "https://s-media-cache-ak0.pinimg.com/736x/95/1f/90/951f903b1fc9339765d99c5bc1a2da16.jpg",
+                    snippet: "More Funny Caption Animal",
+                    thumbnail: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSiKgGYTRaapXeR9yWuXD2Uc2qhl1bSnETrmg9D0vXWhbiykyT4KocvgFw",
+                    context: "https://www.pinterest.com/pin/420734790164012040/"
+                    },
+                    {
+                    url: "http://cdnstatic.visualizeus.com/thumbs/36/0b/funny,lolcat,cats,cat,lolcats,humor-360ba427d350494fb4e69b209a93a814_h.jpg",
+                    snippet: "funny-pictures-cat-breaks-",
+                    thumbnail: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT3LYyfkNxQWcG6wmB6M2FgUZpMXbjxXhc-g4CJ18luXAvDBdBNrzXAZQ8",
+                    context: "http://vi.sualize.us/icanhascheezburger_files_wordpress_2008_06_funny_pictures_hug_moment_forever_love_lolcats_picture_n2v.html"
+                    },
+                    {
+                    url: "https://s-media-cache-ak0.pinimg.com/736x/7b/d6/5a/7bd65a12e3f6c6f20143b6a7825c2b53.jpg",
+                    snippet: ".lolcaption.com/lolcats-",
+                    thumbnail: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ_VLbl46v3mtoXFHNWXIyCX10Cu_tSli5bjY1o2LeEFap25XU92dQuWL0",
+                    context: "https://www.pinterest.com/pin/235594624231203797/"
+                    },
+                    {
+                    url: "http://www.petpinz.com/wp-content/uploads/2014/11/iminyourfoyerheadreadingurmindlolcatsfunnycats-flickr-photo-sharing-1415503826g8nk4.jpg",
+                    snippet: "im-in-your-foyer-head-reading-",
+                    thumbnail: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSdOZbTDI3dTEsm0vPIwKCvco3yU8ScxFoCvB89DCRCZzDtm-j04g8gmrg",
+                    context: "http://www.petpinz.com/pin/im-in-your-foyer-head-reading-ur-mind-lolcats-funny-cats/"
+                    },
+                    {
+                    url: "https://s-media-cache-ak0.pinimg.com/564x/35/7e/ff/357effc414856ff1d0b645de26c2518b.jpg",
+                    snippet: "animals, lolcats, funny",
+                    thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM0XispciRDyGCdLQzhhJQp1AkuP6yMXGQlY8mBiK04bYuJUzB13XMBfE3",
+                    context: "https://in.pinterest.com/pin/427067977144904653/"
+                    },
+                    {
+                    url: "http://s2.favim.com/orig/33/cat-funny-lol-lolcats-mean-Favim.com-261389.jpg",
+                    snippet: "cat, funny, lol, lolcats, mean",
+                    thumbnail: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTjH2_3xIIzquPGN-GVgivEQ1Ib4T9W9mCRjcYBsvLNB-e_aWb213o2-qo4",
+                    context: "http://favim.com/image/261389/"
+                    },
+                    {
+                    url: "http://www.bajiroo.com/wp-content/uploads/2013/09/funny-cat-dumbass-meme.jpg",
+                    snippet: "6 funny-cat-dumbass-meme",
+                    thumbnail: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSdvS6MvjmaNS2-Il0kP_etURgWx424mVGISoc1ac6vz8LrBfRhqBGcmco",
+                    context: "http://www.bajiroo.com/2013/09/25-pics-of-lolcats/"
+                    },
+                    {
+                    url: "https://i.ytimg.com/vi/dWpGC6Fg0io/hqdefault.jpg",
+                    snippet: "LOLCats Funny Cats",
+                    thumbnail: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRNMCLSl2dHm87xTU6uMFZD0Jym2E-4lAaSdJzfc_6OkeB_CdF1vjgZZsR2",
+                    context: "https://www.youtube.com/watch?v=dWpGC6Fg0io"
+                    }
+                ]
             </code>
             
-            <h3>Will redirect to: </h3>
+            <h4>Latest Searches:</h4>
+            <code>https://imagesearch-gzformula.c9users.io/api/latest/imagesearch/</code>
+            
+             <h5>Will return latest search queries: </h5>
             <code>
-            	https://www.google.com/
+                [
+                    {
+                    term: "lolcats funny",
+                    when: "2016-06-20T19:24:54.844Z"
+                    },
+                    {
+                    term: "lolcats funny",
+                    when: "2016-06-20T19:22:57.206Z"
+                    },
+                    {
+                    term: "lolcats funny",
+                    when: "2016-06-20T19:04:48.220Z"
+                    },
+                    {
+                    term: "jennifer lawrence",
+                    when: "2016-06-20T19:01:52.481Z"
+                    },
+                    {
+                    term: "lolcats funny",
+                    when: "2016-06-20T19:01:40.772Z"
+                    },
+                    {
+                    term: "lolcats funny",
+                    when: "2016-06-20T19:01:35.880Z"
+                    },
+                    {
+                    term: "lolcats funny",
+                    when: "2016-06-20T18:57:04.818Z"
+                    },
+                    {
+                    term: "lolcats funny",
+                    when: "2016-06-20T18:55:55.239Z"
+                    },
+                    {
+                    term: "lolcats funny",
+                    when: "2016-06-20T18:39:43.657Z"
+                    },
+                    {
+                    term: "lolcats funny",
+                    when: "2016-06-20T18:22:59.921Z"
+                    }
+                ]
             </code>
+            
         </div>
     </body>
 </html>
