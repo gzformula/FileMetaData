@@ -7,7 +7,7 @@ var parseUrlencoded = bodyParser.urlencoded({ extended: false });
 router.route('/')
 .post(parseUrlencoded, function(request, response){  
     var url = request.body.url;
-    response.redirect('/new/' + url);
+    response.redirect('/api/' + url);
 });
 
 module.exports = router;

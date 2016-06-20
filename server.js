@@ -29,7 +29,6 @@ mongo.connect(mongoUrl, function(err, db) {
     searchUrl(app, db);
     latestUrl(app, db);
     
-    
     // listen for client connections
     app.listen(port, function() {
         console.log('Express server listening on port', port);
