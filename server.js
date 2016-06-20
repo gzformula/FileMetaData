@@ -21,13 +21,13 @@ mongo.connect(mongoUrl, function(err, db) {
     
     // require route modules
     var parseRouter = require('./routes/bodyparseroute');
-    var newUrl = require('./routes/new');
-    var forwardUrl = require('./routes/forward');
+    var searchUrl = require('./routes/imagesearch');
+    var latestUrl = require('./routes/latestsearch');
     
     // all requests are dispatched to the routers
-    app.use('/new_form', parseRouter);
-    newUrl(app, db);
-    forwardUrl(app, db);
+    app.use('/api', parseRouter);
+    searchUrl(app, db);
+    latestUrl(app, db);
     
     
     // listen for client connections
