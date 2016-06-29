@@ -21,7 +21,9 @@ mongo.connect(mongoUrl, function(err, db) {
     
     // require route modules
     var parseRouter = require('./routes/bodyparseroute');
+    // /api/imagesearch/lolcats%20funny?offset=10
     var searchUrl = require('./routes/imagesearch');
+    ///api/latest/imagesearch/
     var latestUrl = require('./routes/latestsearch');
     
     // all requests are dispatched to the routers

@@ -1,9 +1,9 @@
 {
-  "name": "fcc_shrinkurl",
+  "name": "fcc_filemetadata",
   "preferGlobal": true,
   "version": "0.0.1",
   "author": "Gary Gerard <garygerard@verizon.net>",
-  "description": "returns a shortURL and the original in JSON format",
+  "description": "returns the file size from upload form in JSON format",
   "license": "MIT",
   "engines": {
     "node": "4.4.5"
@@ -17,9 +17,7 @@
     "errorhandler": "^1.4.3",
     "express": "^4.14.0",
     "express-session": "^1.13.0",
-    "google-images": "^1.0.0",
     "method-override": "^2.3.6",
-    "mongodb": "^2.1.21",
     "morgan": "^1.7.0",
     "multer": "^1.1.0",
     "pug": "^2.0.0-beta3",
