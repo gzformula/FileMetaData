@@ -20,8 +20,6 @@
     "method-override": "^2.3.6",
     "morgan": "^1.7.0",
     "multer": "^1.1.0",
-    "pug": "^2.0.0-beta3",
-    "serve-favicon": "^2.3.0",
-    "url": "^0.11.0"
+    "serve-favicon": "^2.3.0"
   }
 }
