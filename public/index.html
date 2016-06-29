@@ -15,19 +15,14 @@
                 <ul>2) When I submit something, I will receive the file size in bytes within the JSON response.</ul>
                 
             </blockquote>
-            <h3>Example usage:</h3>
-            <h4>Image Search:</h4>
             
-            <code>
-            	https://frozen-dusk-67835.herokuapp.com/api/imagesearch/lolcats%20funny?offset=10
-            </code>
+            <p>Submit a file to view its filesize.</p>
             
-        </div>
-        <p>Submit a file to view its filesize.</p>
+            <form action="/getfilesize" method="post" enctype="multipart/form-data">
+              <input type="file" name="file">
+              <input type="submit">
+            </form>
         
-        <form action="/getfilesize" method="post" enctype="multipart/form-data">
-          <input type="file" name="file">
-          <input type="submit">
-        </form>
+        </div>
     </body>
 </html>
